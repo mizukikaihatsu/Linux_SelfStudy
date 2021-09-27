@@ -1,0 +1,134 @@
+A-array.sh
+A-arr-del.sh
+A-arr-allval.sh
+
+ブレース展開
+echo file-{1001,1002}.txt
+echo file-{1001,1002,old,new}.txt
+echo file-{8..11}.txt
+echo file-{c..f}.txt
+echo file-{8..11..2}.txt
+
+date +%Y-%m-%d
+touch $(date +%Y-%m-%d).txt
+
+算術式
+((a=5+3))
+echo $a
+
+((b = 3 * 4))
+echo $b
+
+x=9
+y=7
+(( z = x + y ))
+echo $z
+
+((x=5+3))
+echo $x
+
+x=5+3
+echo $x
+
+算術式評価（真偽）
+ari-true-false.sh
+
+算術式展開
+echo $((5 + 7))
+
+x=6
+y=9
+z=$((x + y))
+echo $z
+
+制御構造
+①引数がYESという文字列かどうかを判定する（if_yes.sh)
+②cdコマンドをifの条件に指定
+
+③testコマンド
+answer=yes
+[ "$answer" = 'yes' ]
+echo $?
+
+test "$answer" = 'yes'
+echo $?
+
+④ifの注意事項
+if-yes.sh(エラー）
+if-yes1.sh(エラー）
+if-yes2.sh(エラー）
+if-yes3.sh(エラー）
+
+条件の後ろに;を入れずに改行をいれる書き方
+if-yes4.sh
+
+if-unquote.sh(エラー）
+if-unescape.sh(エラー）
+
+改良例
+if-quote.sh
+if-escape.sh
+
+処理は空にできない
+if-noop.sh　：ヌルコマンド
+ないと(エラー）
+
+⑤&&と||
+
+cd ~/work && ls
+
+cd_ok-ls.sh
+
+if-and.sh
+-n(ファイル名が空でない）
+! -e(ファイルが存在しない）
+
+-aと-oも使える
+if [ -n "$file" -a ! -e "$file" ]; then 
+
+⑥[[]]
+test2-str.sh(文字列比較)
+test-and.sh(エラー）
+test2-and.sh(条件式にAND演算を用いる)
+test-strspace.sh(スペースを含む文字列比較エラー）
+if [ "$str" = abc ]; then クオートする
+
+⑦for
+for.sh
+for-args.sh(引数繰り返し）
+
+⑧whileとuntil
+while-sample.sh
+until-sample.sh
+
+コマンドのグループ化
+group1.sh
+group2.sh(グループコマンド）
+subshell.sh(サブシェル）
+subshell_cd.sh(サブシェルディレクトリ移動）
+subshell_param.sh(サブシェル変数代入)
+
+関数
+lsal.sh
+lsal2.sh(関数呼び出し前エラー）
+
+変数の有効範囲
+fparam.sh(関数内変更）
+local_param.sh(ローカル変数)
+local_param_nest.sh(関数から関数）
+local_param_nest2.sh(関数内で都度ローカル）
+local_arr.sh(ローカル配列変数)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

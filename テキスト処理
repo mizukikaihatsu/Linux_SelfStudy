@@ -1,0 +1,122 @@
+//行数・単語数・バイト数を数える
+wc -l /etc/passwd  //行数を表示
+wc -w /etc/passwd  //単語数を表示
+wc -c /etc/passwd  //バイト数を表示
+
+ls / | wc -l  //ルートディレクトリ直下のファイル・ディレクトリ数をカウント
+
+/*file1の内容*/
+Hokkaido
+Aomori
+Iwate
+Miyagi
+Akita
+Yamagata
+Fukushima
+
+sort file1
+
+//結果
+Akita
+Aomori
+Fukushima
+Hokkaido
+Iwate
+Miyagi
+Yamagata
+
+/*number.txtの内容*/
+5
+6
+8
+2
+9
+10
+1
+7
+3
+4
+
+sort number.txt  //オプションなしのソートでは数値順にならない
+//結果
+1
+10
+2
+3
+4
+5
+6
+7
+8
+9
+
+sort -n number.txt
+//結果
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+sort -n -r  number.txt　//逆順にソート
+
+//重複行を含むfile2の内容
+Hokkaido
+Hokkaido
+Aomori
+Iwate
+Iwate
+Iwate
+Miyagi　　
+
+uniq file2  //重複行削除
+
+//結果
+Hokkaido
+Aomori
+Iwate
+Miyagi
+
+//重複行が連続していないfile3
+Hokkaido
+Hokkaido
+Aomori
+Miyagi
+Hokkaido
+
+uniq file3  //重複行が連続していない場合には取り除かれない
+
+//結果
+Hokkaido
+Aomori
+Miyagi
+Hokkaido
+
+sort file3 | uniq  //sortしてから重複行を取り除く
+//結果
+Aomori
+Hokkaido
+Miyagi
+
+sort -u file3   //ソートコマンド　-uオプションで重複行を取り除く
+
+sort file2 | uniq -c  //-cオプションで重複行数を数える
+
+sort file2 | uniq -c | sort -rn   //-cオプションの結果をさらにソートして多い順に表示
+
+cat /etc/passwd
+1 : ユーザ名
+2 : パスワード（ダミー値)
+3 : ユーザID
+4 : グループID
+5 : コメント
+6 : ホームディレクトリ
+7 : ログインシェル
+
+cut -d : -f 7 /etc/passwd   //コロン区切りで7番目のフィールドを切り出して表示
+

@@ -1,0 +1,44 @@
+ls -l /bin/cat  //ファイルオーナの確認
+touch testfile1
+ls -l testfile1
+
+groups  //自分が所属しているグループを確認
+
+//ファイルパーミッション
+オーナー　グループ　その他のユーザ
+r:読み取り w:書き込み x:実行
+
+//ディレクトリのパーミッション
+mkdir dir1
+ls -ld dir1
+
+r:読み取り (ディレクトリに含まれるファイル一覧の取得）
+w:書き込み (ディレクトリ下にあるファイル・ディレクトリの作成・削除)
+x:実行 （ディレクトリをカレントディレクトリにする)
+
+//ファイルモードを変更する//
+(シンボルモード)
+chmod [ugoa][+-=][rwx]<ファイル名>
+u : オーナ  g : グループ  o : その他のユーザ  a : ugoすべて
++ : 権限を追加  - : 権限を禁止  = : 指定した権限と等しくする
+
+chmod u+x testfile1
+ls -l
+//複数のユーザの権限をまとめて設定//
+chmod go=x testfile1
+chmod go=r+x testfile1
+
+(数値モード)
+chmod [８進数の数値] <ファイル名>
+4(r) : 読み取り  2(w) : 書き込み  1(x) : 実行
+
+chmod 755 file1.txt
+
+//スーパーユーザ//
+su
+su -
+exit
+
+cat /etc/shadow
+sudo cat /etc/shadow
+

@@ -1,0 +1,51 @@
+cat
+CTRL+d  //終了
+
+ls -l / > list.txt  //ファイルへ出力
+cat list.txt
+
+ls /qqqq 2> list.txt  //コマンドのエラーメッセージをファイルへリダイレクト
+cat list.txt
+
+0 : 標準入力  1 : 標準出力  2 : 標準エラー出力
+
+//リダイレクトによる上書き
+echo 123 > 123.txt
+cat 123.txt
+echo 456 > 123.txt
+cat 123.txt
+
+echo 789 >> 123.txt   //追記リダイレクト（上書きしない）
+cat 123.txt
+
+ls /dev/null   //リダイレクト先によく使われるディレクトリ
+ls -l /dev/null //ファイルタイプ　C　:　スペシャルファイル
+
+//パイプライン//
+ls -l / | less       //lsコマンドの結果をlessコマンドに送り込む
+
+history   //コマンドライン履歴の表示
+history | less   //コマンド履歴をlessで読む
+
+ls -l /etc | cat -n | less   //3つのコマンドをつなげる
+
+//フィルタ
+head /etc/crontab  //ファイルの先頭10行表示
+
+ history | head    //コマンド履歴を10行表示
+
+ //代表的なフィルタコマンド
+ cat  : 入力をそのまま表示
+ head : 先頭の部分を表示
+ tail : 末尾の部部を表示
+ grep : 指定した検索パターンに一致する行だけを表示
+ sort : 順番に並べ替える
+ uniq : 重複した行を取り除く
+ tac  : 逆順に出力する
+ wc   : 行数やバイト数を出力する
+
+du -b /bin/*                  //duコマンドでファイルサイズを表示
+du -b /bin/* | sort -n        //ファイルサイズの小さい順に表示
+du -b /bin/* | sort -n | tac  //ファイルサイズの大きい順に表示
+du -b /bin/* | sort -n | tac | head -n 5　//ファイルサイズの大きい上位5つを表示
+

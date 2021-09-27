@@ -1,0 +1,44 @@
+//ファイルを探す
+mkdir -p dir1/doc
+touch file1.txt dir1/doc/file1.txt
+find . -name file1.txt -print //アクション-printは省略可
+
+find . -type d  //ディレクトリ
+find . -type f  //通常ファイル
+find . -type l  //シンボリックリンク
+find /etc -type l
+find . -type f -a -name "*.txt" //-a : AND 省略可
+find . -type f -name "*.txt"
+
+//ファイル名データベースからファイル検索
+locate --version
+sudo apt-get install mlocate
+sudo updatedb  //root権限でデータベース作成（一度行った後は自動更新）
+
+locate bash      //bashという文字列を含む検索
+locate "*.sed"   //ワイルドカード使用
+locate -i notes  //-i  大文字小文字区別なし
+locate -b python //ファイル名だけを検索
+locate docs document  //複数の検索パターン　OR検索
+locate -A bash doc    //複数の検索パターンすべて含む AND検索
+locate --all bash doc //同じ
+
+//コマンドの使い方を調べる
+cat --help
+man cat //lessで表示　spaceでスクロール qで終了
+man man //manコマンドマニュアル
+man -k copy //キーワードからマニュアルを検索 ()はセクション
+
+man crontab
+man 5 crontab //セクションで調べる
+man 1 crontab
+man -wa crontab  //セクション番号のリスト表示
+
+//コマンドを探す
+ls -lF /bin/cat  //catコマンドは/bin/ディレクトリの中にファイルがある
+echo $PATH  //シェルはコマンドをパスから見つけて実行する
+which cat  //catコマンドのフルパスを検索
+which -a lsmod  //lsmodコマンドをすべてのパスから検索
+
+//日本語ドキュメントと英語ドキュメント
+JMプロジェクト　http://linuxjm.osdn.jp/

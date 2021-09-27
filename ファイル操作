@@ -1,0 +1,134 @@
+各ディレクトリの役割
+/bin  Linuxシステムの動作に最低限必要な重要度の高いコマンドが格納
+/dev  デバイスファイルを格納
+/etc  設定ファイルを格納
+/home  ユーザごとに割り当てられるホームディレクトリ
+/sbin  実行ファイルを格納
+/temp  一時的ファイルを格納
+/usr  各種アプリケーションと付随するファイルを格納
+/var  変化するデータを置くため
+
+pwd  //カレントディレクトリ表示
+cd  //カレントディレクトリ変更
+ls  //ディレクトリ内のファイルを表示
+
+cd ~
+
+ls /           /*ディレクトリ*/
+ls /bin/cp     /*ファイルを引数*/
+
+ls /bin/nocomand   /*エラー*/
+
+ls /  /usr    /*複数のディレクトリを引数にする*/
+
+ls ba*     /*任意の文字列*/
+ls ba??    /*任意の1文字*/
+
+ls -l      //詳細情報表示
+ls -a      //隠しファイル表示
+ls -F      //ファイル種別を表示  /ディレクトリ　*実行可能ファイル @シンボリックリンク
+
+ls -a -F
+ls -aF
+ls --quote-name  //ファイル名をダブルクォートで囲んで表示
+
+mkdir work  //ディレクトリ作成  注：ファイルと同名のディレクトリは作れない
+
+mkdir report/2020/04    //途中のディレクトリがない場合は作れない
+mkdir -p report/2020/04 //オプション指定
+
+touch newfile  //ファイル作成　　既存のファイルは上書きされない
+
+rm newfile  //ファイル削除
+
+touch file1 file2 file3
+rm file1 file2 file3
+
+mkdir dir1
+rm -r dir1  //ディレクトリ削除
+
+mkdir dir1
+touch dir1/file1 dir1/file2 dir1/file3
+ls
+rm -r dir1 
+
+rm -i file1  //削除確認
+
+rmdir dir1  //中にファイルがあると削除できない
+
+ls -a
+dir1/.hideenなど
+隠しファイルが残っていると削除できない
+
+cat  /etc/crontab     //ファイルの内容を表示
+cat -n /etc/crontab   //行番号表示
+
+cat
+ctrl+d
+
+less /etc/bash.bashrc  //スクロール表示   f:1画面下, b:1画面上, j:1行下, k:1行上, q:終了
+                       //検索操作　/文字列:下方向, ?文字列:上方向, n:次に移動, N:前に移動
+
+touch file1
+cp file1 file2  //ファイルコピー
+
+cp file1 dir1  //ディレクトリにコピー
+
+touch file3
+mkdir dir2
+cp file1 file2 file3 dir2  //３つのファイルをdir2にコピー
+
+cp *.txt backupdir
+
+cp -i file1 file2  //上書き確認
+
+cp -r dir2 dir3  //ディレクトリごとコピー
+
+//テスト用ディレクトリとファイル作成
+mkdir mvtest
+cd mvtest
+touch file1
+mv file1 file2  //ファイル名の変更
+
+//移動先がディレクトリの例
+mkdir dir1
+touch file1
+mv file1 dir1
+ls dir1
+
+//複数ファイルの移動
+touch file1 file2 file3
+mv file1 file2 file3 dir1
+ls dir1
+
+//ハードリンクの作成
+cp /etc/crontab file1
+ls
+ln file1 file2
+ls
+cat file2
+
+//ハードリンクの削除
+rm file1
+ls
+cat file2
+rm file2
+ls
+
+//シンボリックリンクの作成
+cp /etc/crontab file1
+ln -s file1 file2
+ls -l
+cat file2
+
+//シンボリックリンクの削除
+rm file2
+ls
+
+//壊れたシンボリックリンク
+ln -s file1 file2
+ls -l
+rm file1
+ls -l
+cat file2
+
